@@ -26,7 +26,8 @@
         android:layout_width="match_parent"
         android:layout_height="112dp"
         android:background="@color/theme_primary"
-        android:elevation="16dp">
+        android:elevation="16dp"
+        android:layout_marginBottom="8dp">
         <android.support.design.widget.CollapsingToolbarLayout
             android:id="@+id/collapsing_toolbar_layout"
             android:layout_width="match_parent"

@@ -18,12 +18,14 @@
 <resources>
 
     <style name="Theme.Bacon" parent="@style/Theme.AppCompat.Light.NoActionBar">
-        <item name="colorPrimary"> @color/theme_primary</item>
-        <item name="colorPrimaryDark"> @color/theme_primary_dark</item>
-        <item name="colorAccent"> @color/theme_accent</item>
+        <item name="colorPrimary">@color/theme_primary</item>
+        <item name="colorPrimaryDark">@color/theme_primary_dark</item>
+        <item name="colorAccent">@color/theme_accent</item>
         <item name="android:windowContentTransitions">true</item>
         <item name="android:windowAllowEnterTransitionOverlap">true</item>
         <item name="android:windowAllowReturnTransitionOverlap">true</item>
+        <item name="android:windowExitTransition">@transition/activity_slide</item>
+        <item name="android:windowEnterAnimation">@transition/activity_slide</item>
 
     </style>
 

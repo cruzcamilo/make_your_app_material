@@ -22,6 +22,7 @@ import android.text.format.DateUtils;
 import android.text.method.LinkMovementMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -133,7 +134,7 @@ public class ArticleDetailFragment extends Fragment implements
             @Override
             public void onScrollChanged() {
                 mScrollY = mScrollView.getScrollY();
-                getActivityCast().onUpButtonFloorChanged(mItemId, ArticleDetailFragment.this);
+
                 mPhotoContainerView.setTranslationY((int) (mScrollY - mScrollY / PARALLAX_FACTOR));
                 updateStatusBar();
             }
@@ -180,18 +181,17 @@ public class ArticleDetailFragment extends Fragment implements
 
         Toolbar toolBar =
                 (Toolbar) mRootView.findViewById(R.id.app_bar);
-        //((ArticleDetailActivity) getActivity()).setSupportActionBar(toolBar);
-        //((ArticleDetailActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         toolBar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //getActivity().onBackPressed();
                 NavUtils.navigateUpFromSameTask(getActivity());
             }
         });
 
+
         bindViews();
+
         updateStatusBar();
         return mRootView;
     }
@@ -310,6 +310,8 @@ public class ArticleDetailFragment extends Fragment implements
         }
     }
 
+
+
     @Override
     public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
         return ArticleLoader.newInstanceForItemId(getActivity(), mItemId);
@@ -349,5 +351,15 @@ public class ArticleDetailFragment extends Fragment implements
         return mIsCard
                 ? (int) mPhotoContainerView.getTranslationY() + mPhotoView.getHeight() - mScrollY
                 : mPhotoView.getHeight() - mScrollY;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            // Respond to the action bar's Up/Home button
+            case android.R.id.home:
+                ((ArticleDetailActivity)getActivity()).supportFinishAfterTransition();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
