@@ -24,4 +24,6 @@
     <color name="black">@android:color/black</color>
     <color name="article_subtitle">#3F51B5</color>
     <color name="background">#008e9d</color>
+    <color name="fragment_detail_title">#fff</color>
+    <color name="fragment_detail_date">#8fff</color>
 </resources>
